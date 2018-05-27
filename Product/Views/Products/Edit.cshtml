@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div data-bind="with: editproduct">
+
+    <h2 data-bind="visible: isCreateView">Create</h2>
+    <h2 data-bind="visible: isEditView">Edit</h2>
+
+    <div data-bind ="visible: allowWriteAction">
+        <div class="form-horizontal">
+            <h4 data-bind="visible: isCreateView">New Product</h4>
+            <h4 data-bind="visible: isEditView">Edit Product</h4>
+            <hr />
+
+            <script type="text/javascript">
+                var actions =  @Html.Raw(Json.Encode(ViewBag.Actions));
+                var idProduct = @Html.Raw(Json.Encode(ViewBag.Id));
+            </script>
+
+            <div class="form-group" style="text-align:left">
+                <div class="col-md-2">
+                    <span>Name</span>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" data-bind="value: Name" maxlength="50" width="100%" size="50" />
+                </div>
+            </div>
+
+            <div class="form-group" style="text-align:left">
+                <div class="col-md-2">
+                    <span>Available</span>
+                </div>
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        <input type="checkbox" data-bind="checked: Available" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="text-align:left">
+                <div class="col-md-2">
+                    <span>Price</span>
+                </div>
+                <div class="col-md-10">
+                    <input type="number" min="0" data-bind="value: Price" />
+                </div>
+            </div>
+
+            <div class="form-group" style="text-align:left">
+                <div class="col-md-2">
+                    <span>Description</span>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" data-bind="value: Description" maxlength="250" size="50" />
+                </div>
+            </div>
+            <div class="form-group" style="text-align:left">
+                <div class="col-md-2">
+                    <span>Date Created</span>
+                </div>
+                <div class="col-md-10">
+                    <span data-bind="text: DateCreated" />
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+            <button class="btn btn-success" data-bind="visible: isCreateView, click: addProduct">Create</button>
+            <button class="btn btn-success" data-bind="visible: isEditView, click: updateProduct">Update</button>
+            <button class="btn btn-danger" data-bind="visible: allowReadAction, click: goToList">Back to List</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/editproduct")
+}

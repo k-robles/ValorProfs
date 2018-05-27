@@ -1,0 +1,74 @@
+﻿@model Product.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div data-bind="with: detailsproduct">
+
+    <h2>Product Details</h2>
+
+    <div class="form-horizontal" data-bind="visible: allowReadAction">
+
+        <script type="text/javascript">
+            var actions =  @Html.Raw(Json.Encode(ViewBag.Actions));
+            var idProduct = @Html.Raw(Json.Encode(ViewBag.Id));
+        </script>
+
+        <div class="form-group" style="text-align:left">
+            <div class="col-md-2">
+                <strong>Name</strong>
+            </div>
+            <div class="col-md-10">
+                <span data-bind="text: Name" />
+            </div>
+        </div>
+
+        <div class="form-group" style="text-align:left">
+            <div class="col-md-2">
+                <strong>Available</strong>
+            </div>
+            <div class="col-md-10">
+                <span data-bind="text: Available" />
+            </div>
+        </div>
+
+        <div class="form-group" style="text-align:left">
+            <div class="col-md-2">
+                <strong>Price</strong>
+            </div>
+            <div class="col-md-10">
+                <span data-bind="text: Price" />
+            </div>
+        </div>
+
+        <div class="form-group" style="text-align:left">
+            <div class="col-md-2">
+                <strong>Description</strong>
+            </div>
+            <div class="col-md-10">
+                <span data-bind="text: Description" />
+            </div>
+        </div>
+        <div class="form-group" style="text-align:left">
+            <div class="col-md-2">
+                <strong>Date Created</strong>
+            </div>
+            <div class="col-md-10">
+                <span data-bind="text: DateCreated" />
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <button class="btn btn-danger" data-bind="visible: allowReadAction, click: goToList">Back to List</button>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/detailsproduct")
+}

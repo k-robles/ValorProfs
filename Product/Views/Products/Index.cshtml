@@ -1,0 +1,61 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product List</h2>
+
+<div data-bind="with: products">
+    <p>
+        <button class="btn btn-primary" data-bind="visible: allowWriteAction, click: goToAdd">Create</button>
+    </p>
+
+    <script type="text/javascript">
+        var actions =  @Html.Raw(Json.Encode(ViewBag.Actions));
+    </script>
+
+    <table class="table" data-bind="visible: isListVisible">
+
+        <thead>
+            <tr>
+                <th>
+                    <span>Name</span>
+                </th>
+                <th>
+                    <span>Available</span>
+                </th>
+                <th>
+                    <span>Price</span>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody data-bind="foreach: list">
+            <tr>
+                <td>
+                    <span data-bind="text: name" />
+                </td>
+                <td>
+                    <span data-bind="text: available" />
+                </td>
+                <td>
+                    <span data-bind="text: price" />
+                </td>
+                <td>
+                    <button class="btn btn-info" data-bind="visible: $parent.allowReadAction, click: $parent.goToDetails">Details</button>
+                    <button class="btn btn-success" data-bind="visible: $parent.allowWriteAction, click: $parent.goToEdit">Edit</button>
+                    <button class="btn btn-danger" data-bind="visible: $parent.allowWriteAction, click: $parent.goToDelete">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/products")
+}
