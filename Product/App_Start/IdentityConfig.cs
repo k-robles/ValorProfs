@@ -56,14 +56,41 @@ namespace Product
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
             });
+
             manager.EmailService = new EmailService();
-            manager.SmsService = new SmsService();            
+            manager.SmsService = new SmsService();  
+          
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
+
+            //TODO: refactor with real users and roles
+            RegisterViewModel[] users = new RegisterViewModel[] {  
+                new RegisterViewModel { Email = "admin@admin.com", Hometown = "Madrid, Spain", Password = "admin123"},
+                new RegisterViewModel { Email = "user@user.com", Hometown = "Madrid, Spain", Password = "user 123" }
+            };
+
+            foreach (RegisterViewModel registerUser in users)
+            {
+                var user = manager.FindByEmail(registerUser.Email);
+                if (user == null)
+                {
+                    user = new ApplicationUser { UserName = registerUser.Email, Email = registerUser.Email, Hometown = registerUser.Hometown };
+                    var result = manager.Create(user, registerUser.Password);
+                   
+                    IdentityResult rolesResult;
+                    if (user.UserName.IndexOf("admin") > -1)
+                        rolesResult = manager.AddToRoles(user.Id, new string[] { "admin" });
+                    else
+                        rolesResult = manager.AddToRoles(user.Id, new string[] { "user" });
+
+                    result = manager.SetLockoutEnabled(user.Id, false);
+                }
+            }
+
             return manager;
         }
     }
@@ -91,6 +118,7 @@ namespace Product
 
         public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
         {
+            //TODO: refactor with real roles
             string[] roles = { "admin", "user" };
             var manager = new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
 
