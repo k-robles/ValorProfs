@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Valor Profs</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body data-bind="with: editproduct">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Valor Profs</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">                    
+                    <li><a href="/spa/productlist.html">Products</a></li>
+                </ul>
+                <form action="/Account/LogOff" class="navbar-right" id="logoutForm" method="post">
+                    <input name="__RequestVerificationToken" type="hidden" value="hA1O5PLG_XRB4Kum6f9oZd63uk8bRP6pL5BDHuY4z4US30ZA7D1jSzearbufl2ZbMLBD6lDVSuraBmuRjH0CMYyQTN_liCkyy9aw_4i7Lyk38z1cSyl_-k50nZUL9Lirz_ZQD6JmysI5Ejhrcwr1Tg2" />
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Hello <span data-bind=" text : userEmail"></span>!</a>
+                        </li>
+                        <li>
+                            <a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div>
+
+            <h2 data-bind="visible: isCreateView">Create</h2>
+            <h2 data-bind="visible: isEditView">Edit</h2>
+
+            <div data-bind="visible: allowWriteAction">
+                <div class="form-horizontal">
+                    <h4 data-bind="visible: isCreateView">New Product</h4>
+                    <h4 data-bind="visible: isEditView">Edit Product</h4>
+                    <hr />
+
+                    <script type="text/javascript">
+                        var actions = [];
+                        var idProduct = 0;
+                    </script>
+
+                    <div class="form-group" style="text-align:left">
+                        <div class="col-md-2">
+                            <span>Name</span>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" data-bind="value: Name" maxlength="50" width="100%" size="50" />
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="text-align:left">
+                        <div class="col-md-2">
+                            <span>Available</span>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <input type="checkbox" data-bind="checked: Available" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="text-align:left">
+                        <div class="col-md-2">
+                            <span>Price</span>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="number" min="0" data-bind="value: Price" />
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="text-align:left">
+                        <div class="col-md-2">
+                            <span>Description</span>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" data-bind="value: Description" maxlength="250" size="50" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align:left">
+                        <div class="col-md-2">
+                            <span>Date Created</span>
+                        </div>
+                        <div class="col-md-10">
+                            <span data-bind="text: DateCreated" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <button class="btn btn-success" data-bind="visible: isCreateView, click: addProduct">Create</button>
+                    <button class="btn btn-success" data-bind="visible: isEditView, click: updateProduct">Update</button>
+                    <button class="btn btn-danger" data-bind="visible: allowReadAction, click: goToList">Back to List</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <hr />
+        <footer>
+            <p>&copy; 2018 - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+
+
+    <script src="/Scripts/knockout-2.3.0.debug.js"></script>
+    <script src="/Scripts/knockout.validation.debug.js"></script>
+
+    <script src="/Scripts/sammy-0.7.4.js"></script>
+    <script src="/Scripts/app/common.js"></script>
+    <script src="/Scripts/app/app.datamodel.js"></script>
+    <script src="/Scripts/app/app.viewmodel.js"></script>
+    <script src="/Scripts/app/editproduct.viewmodel.js"></script>
+    <script src="/Scripts/app/_run.js"></script>
+
+
+
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+        {"appName":"Chrome","requestId":"9603aa0994d14b8a979e47126ca64aa6"}
+    </script>
+    <script type="text/javascript" src="http://localhost:50004/48c034d206e44d6fbc83e47c617c9406/browserLink" async="async"></script>
+    <!-- End Browser Link -->
+
+</body>
+</html>

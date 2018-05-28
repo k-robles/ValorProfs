@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Valor Profs</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body data-bind="with: detailsproduct">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Valor Profs</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/spa/productlist.html">Products</a></li>
+                </ul>
+                <form action="/Account/LogOff" class="navbar-right" id="logoutForm" method="post">
+                    <input name="__RequestVerificationToken" type="hidden" value="WcyoCJXp0tKCpRgVA8Ci9PgFc_MwIarB-YT55-tTue3JzG9CmBxJSHQv1ChL1gQcRg1XURRlXXpjrjxQAskJJt4kIyk2WjpZrwsC4zYznASVItz9nzFW3n6qrOm7gOvsoO2LmVsb2ThUMayzsYgarA2" />    
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Hello <span data-bind=" text : userEmail"></span>!</a>
+                        </li>
+                        <li><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div>
+
+            <h2>Product Details</h2>
+
+            <div class="form-horizontal" data-bind="visible: allowReadAction">
+
+                <script type="text/javascript">
+                    var actions = ["read", "write"];
+                    var idProduct = 2;
+                </script>
+
+                <div class="form-group" style="text-align:left">
+                    <div class="col-md-2">
+                        <strong>Name</strong>
+                    </div>
+                    <div class="col-md-10">
+                        <span data-bind="text: Name" />
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <div class="col-md-2">
+                        <strong>Available</strong>
+                    </div>
+                    <div class="col-md-10">
+                        <span data-bind="text: Available" />
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <div class="col-md-2">
+                        <strong>Price</strong>
+                    </div>
+                    <div class="col-md-10">
+                        <span data-bind="text: Price" />
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <div class="col-md-2">
+                        <strong>Description</strong>
+                    </div>
+                    <div class="col-md-10">
+                        <span data-bind="text: Description" />
+                    </div>
+                </div>
+                <div class="form-group" style="text-align:left">
+                    <div class="col-md-2">
+                        <strong>Date Created</strong>
+                    </div>
+                    <div class="col-md-10">
+                        <span data-bind="text: DateCreated" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <button class="btn btn-danger" data-bind="visible: allowReadAction, click: goToList">Back to List</button>
+            </div>
+
+        </div>
+
+
+
+        <hr />
+
+    </div>
+
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+
+
+    <script src="/Scripts/knockout-2.3.0.debug.js"></script>
+    <script src="/Scripts/knockout.validation.debug.js"></script>
+
+    <script src="/Scripts/sammy-0.7.4.js"></script>
+    <script src="/Scripts/app/common.js"></script>
+    <script src="/Scripts/app/app.datamodel.js"></script>
+    <script src="/Scripts/app/app.viewmodel.js"></script>
+    <script src="/Scripts/app/detailsproduct.viewmodel.js"></script>
+    <script src="/Scripts/app/_run.js"></script>
+
+
+</body>
+</html>

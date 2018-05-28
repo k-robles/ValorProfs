@@ -1,24 +1,32 @@
 ﻿function HomeViewModel(app, dataModel) {
     var self = this;
 
-    self.myHometown = ko.observable("");
+    self.Email = ko.observable("");
+    self.Password = ko.observable("");
+    
+    self.requestLogin = function () {    
+        var login ={
+            Email : self.Email(),
+            Password : self.Password(),
+            Remember : true 
+        };
+        $.ajax({
+            type: 'POST',
+            url: "/api/account",
+            data: login,
+            success: function (message) {
+                app.dataModel.setAccessEmail(self.Email());
+                location.href = location.origin + "/spa/productlist.html";
+            },
+            error: function (error) {
+                alert("An error has ocurred.");
+            }
+        });        
+    };
 
     Sammy(function () {
-        this.get('#home', function () {
-            // Make a call to the protected Web API by passing in a Bearer Authorization Header
-            //$.ajax({
-            //    method: 'get',
-            //    url: app.dataModel.userInfoUrl,
-            //    contentType: "application/json; charset=utf-8",
-            //    headers: {
-            //        'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
-            //    },
-            //    success: function (data) {
-            //        self.myHometown('Your Hometown is : ' + data.hometown);
-            //    }
-            //});
-        });
-        this.get('/', function () { this.app.runRoute('get', '#home') });
+        this.get('/', function () { });
+        this.get('/spa/login.html', function () { });
     });
 
     return self;

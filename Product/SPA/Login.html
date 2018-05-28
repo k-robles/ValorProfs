@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Valor Profs</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/Site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Valor Profs</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/spa/productlist.html">Products</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="loginLink">Log in</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+
+
+        <h2>Log in.</h2>
+        <div class="row" data-bind="with: home">
+            <div class="col-md-8">
+                <section id="loginForm">
+                    
+                        <hr />
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="Email">Email</label>
+                            <div class="col-md-10">
+                                <input class="form-control" data-val="true" data-val-email="El campo Email no es una dirección de correo electrónico válida." data-val-required="El campo Email es obligatorio." id="Email" name="Email" type="text" data-bind="value: Email" />
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="Password">Password</label>
+                            <div class="col-md-10">
+                                <input class="form-control" data-val="true" data-val-required="El campo Password es obligatorio." id="Password" name="Password" type="password" data-bind="value: Password"/>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-default" data-bind="click: requestLogin">Login</button>
+                                
+                            </div>
+                        </div>
+                    
+                </section>
+            </div>
+        </div>
+
+
+
+        <hr />
+        <footer>
+            <p>Web Application</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+    <script src="/Scripts/knockout-2.3.0.debug.js"></script>
+    <script src="/Scripts/knockout.validation.debug.js"></script>
+
+    <script src="/Scripts/sammy-0.7.4.js"></script>
+    <script src="/Scripts/app/common.js"></script>
+    <script src="/Scripts/app/app.datamodel.js"></script>
+    <script src="/Scripts/app/app.viewmodel.js"></script>
+    <script src="/Scripts/app/home.viewmodel.js"></script>
+    <script src="/Scripts/app/_run.js"></script>
+</body>
+</html>

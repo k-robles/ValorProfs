@@ -12,7 +12,7 @@ using Microsoft.Owin.Security;
 using Owin;
 using Product.Models;
 
-namespace Product.Controllers
+namespace Product.Controllers.Api
 {
     [Authorize]
     public class ProductController : ApiController
